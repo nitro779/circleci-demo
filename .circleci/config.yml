@@ -5,6 +5,9 @@ jobs:
 
     docker:
       - image: circleci/openjdk:8-jdk
+        auth: 
+          username: $DOCKER_HUB_USER_NAME
+          password: $DOCKER_HUB_PASSWORD
 
 
     steps:
