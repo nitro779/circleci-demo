@@ -1,0 +1,21 @@
+version: 2
+
+jobs:
+  build-and-test:
+
+    docker:
+      - image: openjdk-8jdk
+
+    steps:
+      - checkout
+
+      - run: gradle dependencies
+
+      - run: gradle test
+
+      - run: gradle build
+workflows:
+  version:2
+  workflow:
+    jobs:
+      - build-and-test
