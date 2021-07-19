@@ -4,7 +4,7 @@ jobs:
   build-and-test:
 
     docker:
-      - image: openjdk-8jdk
+      - image: circleci/openjdk-8jdk
 
     steps:
       - checkout
