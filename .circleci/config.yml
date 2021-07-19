@@ -15,7 +15,7 @@ jobs:
 
       - run: gradle build
 workflows:
-  version:2
+  version: 2
   workflow:
     jobs:
       - build-and-test
