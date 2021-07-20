@@ -1,14 +1,15 @@
-version: 2
+version: 2.1
+
+orbs:
+  heroku:circleci/heroku@1.2.6
 
 jobs:
   build-and-test:
-
     docker:
       - image: circleci/openjdk:8-jdk
         auth: 
           username: $DOCKER_HUB_USER_NAME
           password: $DOCKER_HUB_PASSWORD
-
 
     steps:
       - checkout
@@ -18,8 +19,20 @@ jobs:
       - run: gradle test
 
       - run: gradle build
+
+  deploy:
+    docker:
+      - image: openjdk:8-jdk
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git
+
 workflows:
   version: 2
   workflow:
     jobs:
       - build-and-test
+      - deploy:
+          requires:
+            - build-and-test
