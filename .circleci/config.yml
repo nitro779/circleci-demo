@@ -1,13 +1,13 @@
 version: 2.1
 
 orbs:
-  heroku:circleci/heroku@1.2.6
+  heroku: circleci/heroku@1.2.6
 
 jobs:
   build-and-test:
     docker:
       - image: circleci/openjdk:8-jdk
-        auth: 
+        auth:
           username: $DOCKER_HUB_USER_NAME
           password: $DOCKER_HUB_PASSWORD
 
